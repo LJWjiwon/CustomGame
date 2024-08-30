@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverUI;
     public Text ScoreText;
     int score = 0;
+    public bool isGameover = false;
 
     void Awake()
     {
@@ -30,6 +32,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (isGameover)
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                SceneManager.LoadScene(0);
+            }
+            
+        }
+    }
+
     public void PlayerDead()
     {
         GameOverUI.SetActive(true);
@@ -38,6 +52,6 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         this.score += score;
-        ScoreText.text = this.score.ToString();
+        ScoreText.text = "score: " + this.score.ToString();
     }
 }

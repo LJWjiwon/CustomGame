@@ -22,21 +22,24 @@ public class In : MonoBehaviour
     {
         xPos = Random.Range(SpawnLocation[0].transform.position.x, SpawnLocation[1].transform.position.x);
 
-
-        if(Time.time >= lastSpawnTime + timeBetSpawn)
+        if (!GameManager.gamemanager.isGameover)
         {
-            if (Random.Range(0, 5) == 0)
+            if (Time.time >= lastSpawnTime + timeBetSpawn)
             {
-                Item[0].transform.position = new Vector3(xPos, yPos);
-                Instantiate(Item[0], Item[0].transform.position, Item[0].transform.rotation);
+                if (Random.Range(0, 5) == 0)
+                {
+                    Item[0].transform.position = new Vector3(xPos, yPos);
+                    Instantiate(Item[0], Item[0].transform.position, Item[0].transform.rotation);
+                }
+                else
+                {
+                    Item[1].transform.position = new Vector3(xPos, yPos);
+                    Instantiate(Item[1], Item[1].transform.position, Item[1].transform.rotation);
+                }
+                lastSpawnTime = Time.time;
             }
-            else
-            {
-                Item[1].transform.position = new Vector3(xPos, yPos);
-                Instantiate(Item[1], Item[1].transform.position, Item[1].transform.rotation);
-            }
-            lastSpawnTime = Time.time;
         }
+        
     }
 
     

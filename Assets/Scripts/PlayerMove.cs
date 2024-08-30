@@ -8,13 +8,12 @@ public class player : MonoBehaviour
     public float jumpForce = 100f;
     private Rigidbody2D PlayerRigidbody;
     public bool isGround;
-    public bool isDead = false;
 
     public void Update()
     {
         PlayerRigidbody = GetComponent<Rigidbody2D>();
 
-        //if (!GameManager.instance.GameOver)
+        if (!GameManager.gamemanager.isGameover)
         {
             if (Input.GetKey(KeyCode.A))
             {
@@ -50,8 +49,9 @@ public class player : MonoBehaviour
             isGround = true;
         }
 
-        if (collision.gameObject.CompareTag("Die") && !isDead)
+        if (collision.gameObject.CompareTag("Die"))
         {
+            GameManager.gamemanager.isGameover = true;
             Die();
         }
     }
