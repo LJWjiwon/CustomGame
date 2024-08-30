@@ -10,5 +10,10 @@ public class Coin : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.gamemanager.AddScore(1);
+            GameObject.Destroy(gameObject);
+        }
     }
 }

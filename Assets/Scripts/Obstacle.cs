@@ -8,7 +8,14 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
+            GameManager.gamemanager.AddScore(1);
             GameObject.Destroy(gameObject);
         }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.gamemanager.PlayerDead();
+        }
     }
+
+   
 }

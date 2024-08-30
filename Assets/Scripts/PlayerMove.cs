@@ -56,8 +56,10 @@ public class player : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         PlayerRigidbody.velocity = Vector2.zero;
+
+        GameManager.gamemanager.PlayerDead();
     }
 }
