@@ -8,6 +8,7 @@ public class player : MonoBehaviour
     public float jumpForce = 100f;
     private Rigidbody2D PlayerRigidbody;
     public bool isGround;
+    public bool isDead = false;
 
     public void Update()
     {
@@ -48,5 +49,15 @@ public class player : MonoBehaviour
         {
             isGround = true;
         }
+
+        if (collision.gameObject.CompareTag("Die") && !isDead)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        PlayerRigidbody.velocity = Vector2.zero;
     }
 }

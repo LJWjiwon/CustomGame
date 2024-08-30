@@ -39,12 +39,6 @@ public class In : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-        {
-            GameObject.Destroy(gameObject);
-        }
-    }
+    
 
 }
